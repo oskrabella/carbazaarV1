@@ -1,0 +1,19 @@
+<div class="reserve-pds">
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h1>RESERVE A VEHICLE</h1>
+        <!-- <input ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/> -->
+        <label class="form-group no-brad">
+          <span class="label">Search for a Business Name</span>
+            <div class="input-group no-brad">
+              <input class="form-control no-brad brad-top-left brad-bottom-left" ngx-google-places-autocomplete [options]='' placeholder="" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true"/>
+              <div class="input-group-append no-brad brad-top-right brad-bottom-right">
+                <span class="input-group-text" id="basic-addon2"><i class="material-icons md-18">search</i></span>
+              </div>
+            </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

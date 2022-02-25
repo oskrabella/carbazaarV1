@@ -1,217 +1,219 @@
-<div class="reserve-mgs">
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <h1>RESERVE A VEHICLE</h1>
-        <div class="row">
-          <div class="col-6">
-            <label class="form-group w-100">
-              <span class="label">Enter pick-up location or zip code</span>
-              <div class="input-group">
-                <input class="form-control" ngx-google-places-autocomplete placeholder="" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true" />
-                <div class="input-group-append no-brad brad-top-right brad-bottom-right">
-                  <span class="input-group-text" id="basic-addon2"><i class="material-icons">search</i></span>
+<form [formGroup]="reservationForm">
+  <div class="reserve-mgs">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h1>RESERVE A VEHICLE</h1>
+          <div class="row">
+            <div class="col-6">
+              <label class="form-group w-100">
+                <span class="label">Enter pick-up location or zip code<span class="text-danger required-indicator">*</span></span>
+                <div class="input-group">
+                  <input class="form-control" ngx-google-places-autocomplete placeholder="" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true" />
+                  <div class="input-group-append no-brad brad-top-right brad-bottom-right">
+                    <span class="input-group-text" id="basic-addon2"><i class="material-icons">search</i></span>
+                  </div>
                 </div>
-              </div>
-            </label>
-          </div>
-          <div class="col-3">
-            <div class="dp-hidden position-absolute">
-              <div class="input-group mt-20">
-                <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!"
-                  tabindex="-1">
-                <ng-template #t let-date let-focused="focused">
-                  <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
-                    {{ date.day }}
-                  </span>
-                </ng-template>
-              </div>
+              </label>
             </div>
-            <label class="form-group">
-              <div class="input-group mt-20">
-                <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate" [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
-                <!-- <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="material-icons md-18">calendar_today</i></button> -->
-                <div class="input-group-append">
-                  <span class="input-group-text" (click)="datepicker.toggle()"><i class="material-icons">calendar_today</i></span>
+            <div class="col-3">
+              <div class="dp-hidden position-absolute">
+                <div class="input-group mt-20">
+                  <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!"
+                    tabindex="-1">
+                  <ng-template #t let-date let-focused="focused">
+                    <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                      {{ date.day }}
+                    </span>
+                  </ng-template>
                 </div>
               </div>
-            </label>
-          </div>
-          <div class="col-3">
-            <label class="form-group mt-20">
-              <select name="reservationPickUpTime" class="form-control" aria-label="Pick Up Time">
-                <option label="midnight" value="string:12:00 AM">midnight</option>
-                <option label="12:30 AM" value="string:12:30 AM">12:30 AM</option>
-                <option label="1:00 AM" value="string:1:00 AM">1:00 AM</option>
-                <option label="1:30 AM" value="string:1:30 AM">1:30 AM</option>
-                <option label="2:00 AM" value="string:2:00 AM">2:00 AM</option>
-                <option label="2:30 AM" value="string:2:30 AM">2:30 AM</option>
-                <option label="3:00 AM" value="string:3:00 AM">3:00 AM</option>
-                <option label="3:30 AM" value="string:3:30 AM">3:30 AM</option>
-                <option label="4:00 AM" value="string:4:00 AM">4:00 AM</option>
-                <option label="4:30 AM" value="string:4:30 AM">4:30 AM</option>
-                <option label="5:00 AM" value="string:5:00 AM">5:00 AM</option>
-                <option label="5:30 AM" value="string:5:30 AM">5:30 AM</option>
-                <option label="6:00 AM" value="string:6:00 AM">6:00 AM</option>
-                <option label="6:30 AM" value="string:6:30 AM">6:30 AM</option>
-                <option label="7:00 AM" value="string:7:00 AM">7:00 AM</option>
-                <option label="7:30 AM" value="string:7:30 AM">7:30 AM</option>
-                <option label="8:00 AM" value="string:8:00 AM">8:00 AM</option>
-                <option label="8:30 AM" value="string:8:30 AM">8:30 AM</option>
-                <option label="9:00 AM" value="string:9:00 AM">9:00 AM</option>
-                <option label="9:30 AM" value="string:9:30 AM">9:30 AM</option>
-                <option label="10:00 AM" value="string:10:00 AM">10:00 AM</option>
-                <option label="10:30 AM" value="string:10:30 AM">10:30 AM</option>
-                <option label="11:00 AM" value="string:11:00 AM">11:00 AM</option>
-                <option label="11:30 AM" value="string:11:30 AM">11:30 AM</option>
-                <option label="noon" value="string:12:00 PM" selected="selected">noon</option>
-                <option label="12:30 PM" value="string:12:30 PM">12:30 PM</option>
-                <option label="1:00 PM" value="string:1:00 PM">1:00 PM</option>
-                <option label="1:30 PM" value="string:1:30 PM">1:30 PM</option>
-                <option label="2:00 PM" value="string:2:00 PM">2:00 PM</option>
-                <option label="2:30 PM" value="string:2:30 PM">2:30 PM</option>
-                <option label="3:00 PM" value="string:3:00 PM">3:00 PM</option>
-                <option label="3:30 PM" value="string:3:30 PM">3:30 PM</option>
-                <option label="4:00 PM" value="string:4:00 PM">4:00 PM</option>
-                <option label="4:30 PM" value="string:4:30 PM">4:30 PM</option>
-                <option label="5:00 PM" value="string:5:00 PM">5:00 PM</option>
-                <option label="5:30 PM" value="string:5:30 PM">5:30 PM</option>
-                <option label="6:00 PM" value="string:6:00 PM">6:00 PM</option>
-                <option label="6:30 PM" value="string:6:30 PM">6:30 PM</option>
-                <option label="7:00 PM" value="string:7:00 PM">7:00 PM</option>
-                <option label="7:30 PM" value="string:7:30 PM">7:30 PM</option>
-                <option label="8:00 PM" value="string:8:00 PM">8:00 PM</option>
-                <option label="8:30 PM" value="string:8:30 PM">8:30 PM</option>
-                <option label="9:00 PM" value="string:9:00 PM">9:00 PM</option>
-                <option label="9:30 PM" value="string:9:30 PM">9:30 PM</option>
-                <option label="10:00 PM" value="string:10:00 PM">10:00 PM</option>
-                <option label="10:30 PM" value="string:10:30 PM">10:30 PM</option>
-                <option label="11:00 PM" value="string:11:00 PM">11:00 PM</option>
-                <option label="11:30 PM" value="string:11:30 PM">11:30 PM</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <label class="form-group w-100">
-              <span class="label">Drop off location or zip code</span>
-              <div class="input-group">
-                <input class="form-control" ngx-google-places-autocomplete placeholder="Return to same location" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true" />
-                <div class="input-group-append no-brad brad-top-right brad-bottom-right">
-                  <span class="input-group-text" id="basic-addon2"><i class="material-icons">search</i></span>
+              <label class="form-group">
+                <div class="input-group mt-20">
+                  <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate" [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                  <!-- <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="material-icons md-18">calendar_today</i></button> -->
+                  <div class="input-group-append">
+                    <span class="input-group-text" (click)="datepicker.toggle()"><i class="material-icons">calendar_today</i></span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
+            <div class="col-3">
+              <label class="form-group mt-20">
+                <select name="reservationPickUpTime" class="form-control" aria-label="Pick Up Time">
+                  <option label="midnight" value="string:12:00 AM">midnight</option>
+                  <option label="12:30 AM" value="string:12:30 AM">12:30 AM</option>
+                  <option label="1:00 AM" value="string:1:00 AM">1:00 AM</option>
+                  <option label="1:30 AM" value="string:1:30 AM">1:30 AM</option>
+                  <option label="2:00 AM" value="string:2:00 AM">2:00 AM</option>
+                  <option label="2:30 AM" value="string:2:30 AM">2:30 AM</option>
+                  <option label="3:00 AM" value="string:3:00 AM">3:00 AM</option>
+                  <option label="3:30 AM" value="string:3:30 AM">3:30 AM</option>
+                  <option label="4:00 AM" value="string:4:00 AM">4:00 AM</option>
+                  <option label="4:30 AM" value="string:4:30 AM">4:30 AM</option>
+                  <option label="5:00 AM" value="string:5:00 AM">5:00 AM</option>
+                  <option label="5:30 AM" value="string:5:30 AM">5:30 AM</option>
+                  <option label="6:00 AM" value="string:6:00 AM">6:00 AM</option>
+                  <option label="6:30 AM" value="string:6:30 AM">6:30 AM</option>
+                  <option label="7:00 AM" value="string:7:00 AM">7:00 AM</option>
+                  <option label="7:30 AM" value="string:7:30 AM">7:30 AM</option>
+                  <option label="8:00 AM" value="string:8:00 AM">8:00 AM</option>
+                  <option label="8:30 AM" value="string:8:30 AM">8:30 AM</option>
+                  <option label="9:00 AM" value="string:9:00 AM">9:00 AM</option>
+                  <option label="9:30 AM" value="string:9:30 AM">9:30 AM</option>
+                  <option label="10:00 AM" value="string:10:00 AM">10:00 AM</option>
+                  <option label="10:30 AM" value="string:10:30 AM">10:30 AM</option>
+                  <option label="11:00 AM" value="string:11:00 AM">11:00 AM</option>
+                  <option label="11:30 AM" value="string:11:30 AM">11:30 AM</option>
+                  <option label="noon" value="string:12:00 PM" selected="selected">noon</option>
+                  <option label="12:30 PM" value="string:12:30 PM">12:30 PM</option>
+                  <option label="1:00 PM" value="string:1:00 PM">1:00 PM</option>
+                  <option label="1:30 PM" value="string:1:30 PM">1:30 PM</option>
+                  <option label="2:00 PM" value="string:2:00 PM">2:00 PM</option>
+                  <option label="2:30 PM" value="string:2:30 PM">2:30 PM</option>
+                  <option label="3:00 PM" value="string:3:00 PM">3:00 PM</option>
+                  <option label="3:30 PM" value="string:3:30 PM">3:30 PM</option>
+                  <option label="4:00 PM" value="string:4:00 PM">4:00 PM</option>
+                  <option label="4:30 PM" value="string:4:30 PM">4:30 PM</option>
+                  <option label="5:00 PM" value="string:5:00 PM">5:00 PM</option>
+                  <option label="5:30 PM" value="string:5:30 PM">5:30 PM</option>
+                  <option label="6:00 PM" value="string:6:00 PM">6:00 PM</option>
+                  <option label="6:30 PM" value="string:6:30 PM">6:30 PM</option>
+                  <option label="7:00 PM" value="string:7:00 PM">7:00 PM</option>
+                  <option label="7:30 PM" value="string:7:30 PM">7:30 PM</option>
+                  <option label="8:00 PM" value="string:8:00 PM">8:00 PM</option>
+                  <option label="8:30 PM" value="string:8:30 PM">8:30 PM</option>
+                  <option label="9:00 PM" value="string:9:00 PM">9:00 PM</option>
+                  <option label="9:30 PM" value="string:9:30 PM">9:30 PM</option>
+                  <option label="10:00 PM" value="string:10:00 PM">10:00 PM</option>
+                  <option label="10:30 PM" value="string:10:30 PM">10:30 PM</option>
+                  <option label="11:00 PM" value="string:11:00 PM">11:00 PM</option>
+                  <option label="11:30 PM" value="string:11:30 PM">11:30 PM</option>
+                </select>
+              </label>
+            </div>
           </div>
-          <div class="col-3">
-            <label class="form-group">
-              <div class="input-group mt-20">
-                <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate" [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)">
-                <!-- <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="material-icons md-18">calendar_today</i></button> -->
-                <div class="input-group-append">
-                  <span class="input-group-text" (click)="datepicker.toggle()"><i class="material-icons">calendar_today</i></span>
+          <div class="row">
+            <div class="col-6">
+              <label class="form-group w-100">
+                <span class="label">Drop off location or zip code</span>
+                <div class="input-group">
+                  <input class="form-control" ngx-google-places-autocomplete placeholder="Return to same location" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true" />
+                  <div class="input-group-append no-brad brad-top-right brad-bottom-right">
+                    <span class="input-group-text" id="basic-addon2"><i class="material-icons">search</i></span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
+            <div class="col-3">
+              <label class="form-group">
+                <div class="input-group mt-20">
+                  <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate" [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)">
+                  <!-- <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="material-icons md-18">calendar_today</i></button> -->
+                  <div class="input-group-append">
+                    <span class="input-group-text" (click)="datepicker.toggle()"><i class="material-icons">calendar_today</i></span>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="col-3">
+              <label class="form-group mt-20">
+                <select name="reservationDropOffTime" class="form-control" aria-label="Drop Off Time">
+                  <option label="midnight" value="string:12:00 AM">midnight</option>
+                  <option label="12:30 AM" value="string:12:30 AM">12:30 AM</option>
+                  <option label="1:00 AM" value="string:1:00 AM">1:00 AM</option>
+                  <option label="1:30 AM" value="string:1:30 AM">1:30 AM</option>
+                  <option label="2:00 AM" value="string:2:00 AM">2:00 AM</option>
+                  <option label="2:30 AM" value="string:2:30 AM">2:30 AM</option>
+                  <option label="3:00 AM" value="string:3:00 AM">3:00 AM</option>
+                  <option label="3:30 AM" value="string:3:30 AM">3:30 AM</option>
+                  <option label="4:00 AM" value="string:4:00 AM">4:00 AM</option>
+                  <option label="4:30 AM" value="string:4:30 AM">4:30 AM</option>
+                  <option label="5:00 AM" value="string:5:00 AM">5:00 AM</option>
+                  <option label="5:30 AM" value="string:5:30 AM">5:30 AM</option>
+                  <option label="6:00 AM" value="string:6:00 AM">6:00 AM</option>
+                  <option label="6:30 AM" value="string:6:30 AM">6:30 AM</option>
+                  <option label="7:00 AM" value="string:7:00 AM">7:00 AM</option>
+                  <option label="7:30 AM" value="string:7:30 AM">7:30 AM</option>
+                  <option label="8:00 AM" value="string:8:00 AM">8:00 AM</option>
+                  <option label="8:30 AM" value="string:8:30 AM">8:30 AM</option>
+                  <option label="9:00 AM" value="string:9:00 AM">9:00 AM</option>
+                  <option label="9:30 AM" value="string:9:30 AM">9:30 AM</option>
+                  <option label="10:00 AM" value="string:10:00 AM">10:00 AM</option>
+                  <option label="10:30 AM" value="string:10:30 AM">10:30 AM</option>
+                  <option label="11:00 AM" value="string:11:00 AM">11:00 AM</option>
+                  <option label="11:30 AM" value="string:11:30 AM">11:30 AM</option>
+                  <option label="noon" value="string:12:00 PM" selected="selected">noon</option>
+                  <option label="12:30 PM" value="string:12:30 PM">12:30 PM</option>
+                  <option label="1:00 PM" value="string:1:00 PM">1:00 PM</option>
+                  <option label="1:30 PM" value="string:1:30 PM">1:30 PM</option>
+                  <option label="2:00 PM" value="string:2:00 PM">2:00 PM</option>
+                  <option label="2:30 PM" value="string:2:30 PM">2:30 PM</option>
+                  <option label="3:00 PM" value="string:3:00 PM">3:00 PM</option>
+                  <option label="3:30 PM" value="string:3:30 PM">3:30 PM</option>
+                  <option label="4:00 PM" value="string:4:00 PM">4:00 PM</option>
+                  <option label="4:30 PM" value="string:4:30 PM">4:30 PM</option>
+                  <option label="5:00 PM" value="string:5:00 PM">5:00 PM</option>
+                  <option label="5:30 PM" value="string:5:30 PM">5:30 PM</option>
+                  <option label="6:00 PM" value="string:6:00 PM">6:00 PM</option>
+                  <option label="6:30 PM" value="string:6:30 PM">6:30 PM</option>
+                  <option label="7:00 PM" value="string:7:00 PM">7:00 PM</option>
+                  <option label="7:30 PM" value="string:7:30 PM">7:30 PM</option>
+                  <option label="8:00 PM" value="string:8:00 PM">8:00 PM</option>
+                  <option label="8:30 PM" value="string:8:30 PM">8:30 PM</option>
+                  <option label="9:00 PM" value="string:9:00 PM">9:00 PM</option>
+                  <option label="9:30 PM" value="string:9:30 PM">9:30 PM</option>
+                  <option label="10:00 PM" value="string:10:00 PM">10:00 PM</option>
+                  <option label="10:30 PM" value="string:10:30 PM">10:30 PM</option>
+                  <option label="11:00 PM" value="string:11:00 PM">11:00 PM</option>
+                  <option label="11:30 PM" value="string:11:30 PM">11:30 PM</option>
+                </select>
+              </label>
+            </div>
           </div>
-          <div class="col-3">
-            <label class="form-group mt-20">
-              <select name="reservationDropOffTime" class="form-control" aria-label="Drop Off Time">
-                <option label="midnight" value="string:12:00 AM">midnight</option>
-                <option label="12:30 AM" value="string:12:30 AM">12:30 AM</option>
-                <option label="1:00 AM" value="string:1:00 AM">1:00 AM</option>
-                <option label="1:30 AM" value="string:1:30 AM">1:30 AM</option>
-                <option label="2:00 AM" value="string:2:00 AM">2:00 AM</option>
-                <option label="2:30 AM" value="string:2:30 AM">2:30 AM</option>
-                <option label="3:00 AM" value="string:3:00 AM">3:00 AM</option>
-                <option label="3:30 AM" value="string:3:30 AM">3:30 AM</option>
-                <option label="4:00 AM" value="string:4:00 AM">4:00 AM</option>
-                <option label="4:30 AM" value="string:4:30 AM">4:30 AM</option>
-                <option label="5:00 AM" value="string:5:00 AM">5:00 AM</option>
-                <option label="5:30 AM" value="string:5:30 AM">5:30 AM</option>
-                <option label="6:00 AM" value="string:6:00 AM">6:00 AM</option>
-                <option label="6:30 AM" value="string:6:30 AM">6:30 AM</option>
-                <option label="7:00 AM" value="string:7:00 AM">7:00 AM</option>
-                <option label="7:30 AM" value="string:7:30 AM">7:30 AM</option>
-                <option label="8:00 AM" value="string:8:00 AM">8:00 AM</option>
-                <option label="8:30 AM" value="string:8:30 AM">8:30 AM</option>
-                <option label="9:00 AM" value="string:9:00 AM">9:00 AM</option>
-                <option label="9:30 AM" value="string:9:30 AM">9:30 AM</option>
-                <option label="10:00 AM" value="string:10:00 AM">10:00 AM</option>
-                <option label="10:30 AM" value="string:10:30 AM">10:30 AM</option>
-                <option label="11:00 AM" value="string:11:00 AM">11:00 AM</option>
-                <option label="11:30 AM" value="string:11:30 AM">11:30 AM</option>
-                <option label="noon" value="string:12:00 PM" selected="selected">noon</option>
-                <option label="12:30 PM" value="string:12:30 PM">12:30 PM</option>
-                <option label="1:00 PM" value="string:1:00 PM">1:00 PM</option>
-                <option label="1:30 PM" value="string:1:30 PM">1:30 PM</option>
-                <option label="2:00 PM" value="string:2:00 PM">2:00 PM</option>
-                <option label="2:30 PM" value="string:2:30 PM">2:30 PM</option>
-                <option label="3:00 PM" value="string:3:00 PM">3:00 PM</option>
-                <option label="3:30 PM" value="string:3:30 PM">3:30 PM</option>
-                <option label="4:00 PM" value="string:4:00 PM">4:00 PM</option>
-                <option label="4:30 PM" value="string:4:30 PM">4:30 PM</option>
-                <option label="5:00 PM" value="string:5:00 PM">5:00 PM</option>
-                <option label="5:30 PM" value="string:5:30 PM">5:30 PM</option>
-                <option label="6:00 PM" value="string:6:00 PM">6:00 PM</option>
-                <option label="6:30 PM" value="string:6:30 PM">6:30 PM</option>
-                <option label="7:00 PM" value="string:7:00 PM">7:00 PM</option>
-                <option label="7:30 PM" value="string:7:30 PM">7:30 PM</option>
-                <option label="8:00 PM" value="string:8:00 PM">8:00 PM</option>
-                <option label="8:30 PM" value="string:8:30 PM">8:30 PM</option>
-                <option label="9:00 PM" value="string:9:00 PM">9:00 PM</option>
-                <option label="9:30 PM" value="string:9:30 PM">9:30 PM</option>
-                <option label="10:00 PM" value="string:10:00 PM">10:00 PM</option>
-                <option label="10:30 PM" value="string:10:30 PM">10:30 PM</option>
-                <option label="11:00 PM" value="string:11:00 PM">11:00 PM</option>
-                <option label="11:30 PM" value="string:11:30 PM">11:30 PM</option>
-              </select>
-            </label>
+          <div class="row">
+            <div class="col-4">
+              <label for="promoCode" class="form-group w-100">
+                <span class="label">Insert Promo Code</span>
+                <input type="text" class="form-control" name="promoCode">
+              </label>
+            </div>
+            <div class="col-2">
+              <label class="form-group d-flex align-items-center mt-20">
+                <div class="mr-2">
+                  Age:
+                </div>
+                <select name="customerAge" class="form-control" aria-label="Customer Age">
+                  <option label="+25" selected value="25+">+25</option>
+                  <option label="24" value="24">24</option>
+                  <option label="23" value="23">23</option>
+                  <option label="22" value="22">22</option>
+                  <option label="21" value="21">21</option>
+                  <option label="20" value="20">20</option>
+                  <option label="19" value="19">19</option>
+                  <option label="18" value="18">18</option>
+                </select>
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="promoCode" class="form-group w-100">
+                <span class="label">CarBaazar Rewards Number</span>
+                <input type="text" class="form-control" name="promoCode">
+              </label>
+            </div>
+            <div class="col-3">
+              <label class="form-group mt-20">
+                <select disabled name="vehicleType" class="form-control" aria-label="Vehicle Type">
+                  <option label="All Vehicles" selected value="All Vehicles">All Vehicles</option>
+                </select>
+              </label>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-4">
-            <label for="promoCode" class="form-group w-100">
-              <span class="label">Insert Promo Code</span>
-              <input type="text" class="form-control" name="promoCode">
-            </label>
-          </div>
-          <div class="col-2">
-            <label class="form-group d-flex align-items-center mt-20">
-              <div class="mr-2">
-                Age:
-              </div>
-              <select name="customerAge" class="form-control" aria-label="Customer Age">
-                <option label="25" selected value="25+">25+</option>
-                <option label="24" selected value="24">24</option>
-                <option label="23" selected value="23">23</option>
-                <option label="22" selected value="22">22</option>
-                <option label="21" selected value="21">21</option>
-                <option label="20" selected value="20">20</option>
-                <option label="19" selected value="19">19</option>
-                <option label="18" selected value="18">18</option>
-              </select>
-            </label>
-          </div>
-          <div class="col-3">
-            <label for="promoCode" class="form-group w-100">
-              <span class="label">CarBaazar Rewards Number</span>
-              <input type="text" class="form-control" name="promoCode">
-            </label>
-          </div>
-          <div class="col-3">
-            <label class="form-group mt-20">
-              <select disabled name="vehicleType" class="form-control" aria-label="Vehicle Type">
-                <option label="All Vehicles" selected value="All Vehicles">All Vehicles</option>
-              </select>
-            </label>
-          </div>
+        <div class="card-footer text-center">
+          <button routerLink="/reservation/vehicles" type="button" class="btn btn-primary btn-lg">Select My Car</button>
         </div>
-      </div>
-      <div class="card-footer text-center">
-        <button type="button" class="btn btn-primary btn-lg">Select My Car</button>
       </div>
     </div>
   </div>
-</div>
+</form>

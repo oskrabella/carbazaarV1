@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation-widget',
@@ -7,6 +8,7 @@ import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-b
   styleUrls: ['./reservation-widget.component.scss']
 })
 export class ReservationWidgetComponent implements OnInit {
+  reservationForm: FormGroup;
   company = '';
   address = '';
   pickupLoc = '';
@@ -22,13 +24,28 @@ export class ReservationWidgetComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(
+    private calendar: NgbCalendar,
+    public formatter: NgbDateParserFormatter,
+    private fb: FormBuilder,
+    private formBuilder: FormBuilder
+  ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
    }
   // @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   ngOnInit(): void {
+    this.reservationForm = this.formBuilder.group({
+        pickupLoc: ['', Validators. required],
+        pickupDate: new FormControl(new Date(), Validators.required),
+        pickupTime: ['', Validators. required],
+        dropoffLoc: ['', Validators. required],
+        dropoffDate: new FormControl(new Date(new Date().setFullYear(new Date().getFullYear() + 1)), Validators.required),
+        dropoffTime: ['', Validators. required],
+        age: ['', Validators. required],
+        residency: ['', Validators. required],
+    });
   }
 
   onDateSelection(date: NgbDate) {
@@ -103,5 +120,7 @@ isHovered(date: NgbDate) {
     // }
     console.log(e);
   }
+
+  get f() { return this.reservationForm.controls; }
 
 }

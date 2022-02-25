@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { CsChatBotComponent } from './cs-chat-bot/cs-chat-bot.component';
 import { LandingComponent } from './landing/landing.component';
-import { ReservationsComponent } from './reservations/reservations.component';
+import { ReservationWidgetComponent } from './reservation-widget/reservation-widget.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
     HeaderComponent,
     CsChatBotComponent,
     LandingComponent,
-    ReservationsComponent
+    ReservationWidgetComponent
   ],
   imports: [
     BrowserModule,

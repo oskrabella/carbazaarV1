@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-reservations',
-  templateUrl: './reservations.component.html',
-  styleUrls: ['./reservations.component.scss']
+  selector: 'app-reservation-widget',
+  templateUrl: './reservation-widget.component.html',
+  styleUrls: ['./reservation-widget.component.scss']
 })
-export class ReservationsComponent implements OnInit {
+export class ReservationWidgetComponent implements OnInit {
   company = '';
   address = '';
   pickupLoc = '';

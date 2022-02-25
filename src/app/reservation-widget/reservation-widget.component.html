@@ -1,4 +1,4 @@
-<div class="reserve-pds">
+<div class="reserve-mgs">
   <div class="container">
     <div class="card">
       <div class="card-body">
@@ -97,7 +97,7 @@
             <label class="form-group w-100">
               <span class="label">Drop off location or zip code</span>
               <div class="input-group">
-                <input class="form-control" ngx-google-places-autocomplete placeholder="" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true" />
+                <input class="form-control" ngx-google-places-autocomplete placeholder="Return to same location" #placesRef="ngx-places" (keyup)="watcher($event)" (onAddressChange)="onPickUpSelection($event)" autofocus data-autocomplete-trigger="true" />
                 <div class="input-group-append no-brad brad-top-right brad-bottom-right">
                   <span class="input-group-text" id="basic-addon2"><i class="material-icons">search</i></span>
                 </div>
@@ -170,6 +170,47 @@
             </label>
           </div>
         </div>
+        <div class="row">
+          <div class="col-4">
+            <label for="promoCode" class="form-group w-100">
+              <span class="label">Insert Promo Code</span>
+              <input type="text" class="form-control" name="promoCode">
+            </label>
+          </div>
+          <div class="col-2">
+            <label class="form-group d-flex align-items-center mt-20">
+              <div class="mr-2">
+                Age:
+              </div>
+              <select name="customerAge" class="form-control" aria-label="Customer Age">
+                <option label="25" selected value="25+">25+</option>
+                <option label="24" selected value="24">24</option>
+                <option label="23" selected value="23">23</option>
+                <option label="22" selected value="22">22</option>
+                <option label="21" selected value="21">21</option>
+                <option label="20" selected value="20">20</option>
+                <option label="19" selected value="19">19</option>
+                <option label="18" selected value="18">18</option>
+              </select>
+            </label>
+          </div>
+          <div class="col-3">
+            <label for="promoCode" class="form-group w-100">
+              <span class="label">CarBaazar Rewards Number</span>
+              <input type="text" class="form-control" name="promoCode">
+            </label>
+          </div>
+          <div class="col-3">
+            <label class="form-group mt-20">
+              <select disabled name="vehicleType" class="form-control" aria-label="Vehicle Type">
+                <option label="All Vehicles" selected value="All Vehicles">All Vehicles</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <button type="button" class="btn btn-primary btn-lg">Select My Car</button>
       </div>
     </div>
   </div>

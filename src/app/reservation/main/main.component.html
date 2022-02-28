@@ -1,6 +1,9 @@
 <div class="container">
   <app-progress-widget [step1progress]=step1progress [step2progress]=step2progress [step3progress]=step3progress [step4progress]=step4progress></app-progress-widget>
   <div>
-      <router-outlet #router="outlet" (activate)="onActivate($event)"></router-outlet>
+      <!-- <router-outlet #router="outlet" (activate)="onActivate($event)"></router-outlet> -->
+      <app-vehicles></app-vehicles>
+      <app-options></app-options>
+      <app-review-and-book></app-review-and-book>
   </div>
 </div>

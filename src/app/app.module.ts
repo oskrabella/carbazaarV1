@@ -6,6 +6,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
 // import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -27,7 +32,10 @@ import { ProgressWidgetComponent } from './reservation/progress-widget/progress-
     LandingComponent,
     ReservationWidgetComponent,
     MainComponent,
-    ProgressWidgetComponent
+    ProgressWidgetComponent,
+    VehiclesComponent,
+    ReviewAndBookComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +44,11 @@ import { ProgressWidgetComponent } from './reservation/progress-widget/progress-
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
     // NgSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,

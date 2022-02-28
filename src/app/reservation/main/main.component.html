@@ -1,1 +1,6 @@
-<p>main works!</p>
+<div class="container">
+  <app-progress-widget [step1progress]=step1progress [step2progress]=step2progress [step3progress]=step3progress [step4progress]=step4progress></app-progress-widget>
+  <div>
+      <router-outlet #router="outlet" (activate)="onActivate($event)"></router-outlet>
+  </div>
+</div>

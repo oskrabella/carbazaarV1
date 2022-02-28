@@ -17,6 +17,7 @@ import { VehiclesComponent } from './reservation/vehicles/vehicles.component';
 import { ReviewAndBookComponent } from './reservation/review-and-book/review-and-book.component';
 import { OptionsComponent } from './reservation/options/options.component';
 import { MainComponent } from './reservation/main/main.component';
+import { ProgressWidgetComponent } from './reservation/progress-widget/progress-widget.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MainComponent } from './reservation/main/main.component';
     CsChatBotComponent,
     LandingComponent,
     ReservationWidgetComponent,
-    MainComponent
+    MainComponent,
+    ProgressWidgetComponent
   ],
   imports: [
     BrowserModule,

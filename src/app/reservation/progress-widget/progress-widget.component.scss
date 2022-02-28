@@ -1,0 +1,15 @@
+.progress-widget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .step {
+    border-bottom: 4px solid #ccc;
+    width: 25%;
+  }
+  .step:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+  .step .active {
+    border-bottom: 4px solid #4F73B8;
+  }
+}
